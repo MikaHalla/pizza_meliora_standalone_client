@@ -1,0 +1,825 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+
+$debug: 1px solid hsl(300, 100%, 50%);
+$primary-light: hsl(110, 40%, 75%);
+$primary-dark: hsl(110, 50%, 40%);
+$secondary-light: hsl(0, 0%, 90%);
+$secondary-dark: hsl(0, 0%, 20%);
+$overlay-light: rgba(255, 255, 255, 0.9);
+$overlay-dark: rgba(0, 0, 0, 0.9);
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.flex {
+  display: flex;
+}
+
+body {
+  background-color: $secondary-light;
+  font-family: 'Muli';
+}
+
+//MOBILE MENU
+.mobile-menu {
+  background-color: $overlay-light;
+  height: 100vh;
+  width: 50vw;
+  z-index: 3;
+  position: fixed;
+  padding-top: 6em;
+  transform: translateX(200%);
+  transition: transform 0.2s linear;
+
+  &.visible {
+    transform: translateX(100%);
+  }
+
+  i {
+    color: black;
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    font-size: 2em;
+    cursor: pointer;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  h2 {
+    color: black;
+    margin: 2em 0 0 1em;
+
+    &:hover {
+      color: $primary-dark;
+    }
+  }
+}
+
+//NAVBAR
+nav {
+  width: 100%;
+  background-color: $overlay-dark;
+  color: white;
+  height: 6em;
+  z-index: 1;
+  position: absolute;
+  padding: 1em;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .wrap {
+    max-width: 1000px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .nav-left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .nav-right {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 0.5em;
+    justify-content: flex-end;
+    align-items: center;
+
+    .user {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .shopping-cart {
+      position: relative;
+      color: #fff;
+
+      i {
+        font-size: 1.6em;
+      }
+
+      &-counter {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 1em;
+        width: 1em;
+        padding: 0.7em;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: red;
+        transform: translateX(50%) translateY(-50%);
+      }
+    }
+  }
+
+  .credentials {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.4em;
+    font-size: 0.9em;
+    white-space: nowrap;
+
+    i {
+      margin-right: 0.6em;
+    }
+  }
+
+  img {
+    height: 100px;
+    margin-right: 1.2em;
+    box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.2);
+  }
+
+  .fa-bars {
+    font-size: 1.6em;
+    margin-left: 0.8em;
+
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+//HERO SECTION
+.hero {
+  height: 100vh;
+  max-height: 1080px;
+  width: 100%;
+  position: relative;
+
+  &-image {
+    height: 100%;
+    background-image: url('./assets/img/pizza-komplet.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    .headline {
+      position: absolute;
+      top: 50%;
+      color: white;
+      width: min-content;
+      height: min-content;
+      padding: 1.5em;
+      border: 5px solid white;
+      border-right: none;
+      transform: translateY(-60%);
+      display: block;
+      text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
+      background-color: rgba(0, 0, 0, 0.3);
+
+      h1 {
+        font-size: 3em;
+        line-height: 1.2em;
+      }
+
+      h3 {
+        font-size: 1.7em;
+        margin-top: 0.5em;
+        line-height: 1.4em;
+        text-transform: uppercase;
+      }
+
+      @media screen and (min-width: 600px) {
+        transform: scale(130%) translateY(-60%);
+      }
+    }
+
+    button {
+      background-color: $primary-dark;
+      color: white;
+      padding: 1em;
+      font-size: 1.5em;
+      text-transform: uppercase;
+      border: none;
+      font-weight: bold;
+      box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.2);
+      margin-bottom: 3em;
+
+      &:hover {
+        cursor: pointer;
+        background-color: lighten($primary-dark, 5);
+      }
+
+      &:active {
+        transform: scale(0.99);
+      }
+
+      @media screen and (min-width: 600px) {
+        margin-bottom: 5em;
+      }
+    }
+  }
+}
+
+//SEARCH
+#search {
+  .search-tips {
+    margin: 2em auto;
+    width: 85%;
+    max-width: 512px;
+    text-align: center;
+  }
+
+  input {
+    display: block;
+    width: 85%;
+    max-width: 512px;
+    height: 20px;
+    margin: 2em auto;
+    padding: 1em 0.7em;
+    font-size: 1.5em;
+    border: none;
+
+    &:active,
+    &:focus {
+      outline: 0;
+    }
+  }
+}
+
+//PIZZA LIST CONTAINER
+.pizza-list-container {
+  width: 100%;
+  max-width: 512px;
+  margin: 0 auto;
+  background-color: white;
+
+  @media screen and (min-width: 600px) {
+    margin-bottom: 3em;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 0;
+  }
+
+  @media screen and (min-width: 1280px) {
+    margin-bottom: 3em;
+  }
+
+  .pizza-card {
+    padding: 0.8em;
+    position: relative;
+    height: 6.5em;
+    list-style: none;
+    background-color: white;
+    display: flex;
+    text-decoration: none;
+    color: $secondary-dark;
+
+    &:hover {
+      box-shadow: 0px 0px 20px -2px rgba(#000, 0.1);
+      z-index: 1;
+      cursor: pointer;
+    }
+
+    .--number {
+      min-width: 2em;
+
+      h5 {
+        font-size: 1em;
+        color: $primary-dark;
+        text-align: start;
+      }
+
+      i {
+        &.fa-regular {
+          color: $secondary-light;
+        }
+
+        &.fa-solid {
+          color: gold;
+        }
+      }
+    }
+
+    .--body {
+      width: 100%;
+
+      header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.4em;
+
+        h5 {
+          font-size: 1em;
+          margin-right: 0.5em;
+        }
+
+        p {
+          font-size: 0.8em;
+        }
+      }
+
+      .ingredient-container {
+        width: auto;
+
+        .simple-ingredient-list {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.3em;
+
+          .simple-ingredient {
+            list-style: none;
+            font-size: 0.8em;
+          }
+
+          :not(:last-child)::after {
+            content: ',';
+          }
+        }
+      }
+    }
+
+    .--price {
+      min-width: 3.7em;
+
+      h5 {
+        font-size: 1em;
+        text-align: end;
+      }
+
+      .basket-click {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin-right: 0.7em;
+        margin-bottom: 0.7em;
+        height: 45px;
+        width: 45px;
+        border-radius: 50%;
+        border: 2px solid $secondary-light;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        color: $secondary-light;
+        font-size: 1.3em;
+        font-weight: 700;
+        cursor: pointer;
+
+        &:hover {
+          color: $primary-dark;
+          border: 2px solid $primary-dark;
+        }
+
+        &:active {
+          transform: scale(0.9);
+        }
+      }
+    }
+  }
+}
+
+//PAGINATION
+.pagination {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 1.5em 0;
+
+  button {
+    background-color: $primary-dark;
+    color: white;
+    font-family: inherit;
+    border: none;
+    padding: 0.5em 0;
+    width: 9em;
+    cursor: pointer;
+    user-select: none;
+
+    &:hover {
+      background-color: lighten($primary-dark, 5);
+    }
+
+    &:disabled {
+      background-color: lighten($primary-dark, 50);
+      cursor: not-allowed;
+    }
+    &:active {
+      transform: scale(0.97);
+    }
+  }
+}
+
+//HISTORY
+.history {
+  background-color: lighten($secondary-dark, 5);
+  color: white;
+  padding: 2em;
+  height: 100%;
+
+  @media screen and (min-width: 600px) {
+    padding: 3em;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 2em;
+  }
+
+  @media screen and (min-width: 1024px) {
+    padding: 3em;
+  }
+
+  h1 {
+    margin-bottom: 1em;
+  }
+
+  p {
+    line-height: 1.5em;
+  }
+}
+
+//FOOTER
+footer {
+  background-color: black;
+  color: white;
+  padding: 3em 0;
+  text-align: center;
+}
+
+//MODAL
+.modal {
+  &-backdrop {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  &-content {
+    height: min-content;
+    width: 100%;
+    max-height: 100%;
+    max-width: 512px;
+    background-color: #fff;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    overflow-y: scroll;
+  }
+}
+
+//CUSTOMIZE PIZZA
+.customize-pizza {
+  padding: 0 1.5em;
+
+  header {
+    height: 5em;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    .number {
+      color: $primary-dark;
+    }
+
+    i {
+      font-size: 2em;
+      color: red;
+    }
+  }
+
+  .ingredient-container {
+    .ingredients {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 0.5em;
+
+      @media screen and (min-width: 480px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      &.standard {
+        grid-template-columns: repeat(2, 1fr);
+
+        .removed {
+          color: red;
+          background-color: lighten(red, 45);
+          border: 1px solid red;
+
+          p {
+            text-decoration: line-through;
+          }
+        }
+      }
+
+      &.custom {
+        margin-top: 1.4em;
+
+        .removed {
+          color: rgb(128, 128, 128);
+          background-color: lighten(rgb(128, 128, 128), 45);
+          border: 1px solid lighten(rgb(128, 128, 128), 45);
+        }
+      }
+
+      .ingredient {
+        background-color: lighten($primary-light, 20);
+        color: $primary-dark;
+        text-align: center;
+        border-radius: 0.2em;
+        white-space: nowrap;
+        user-select: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.4em;
+        width: 100%;
+        border: 1px solid $primary-dark;
+        list-style: none;
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        p {
+          white-space: nowrap;
+          font-size: 0.8em;
+        }
+      }
+    }
+  }
+
+  footer {
+    height: 6em;
+    width: 100%;
+    position: sticky;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5em 0;
+    background-color: #fff;
+
+    .add-to-cart-button {
+      font-size: 1em;
+      width: 100%;
+      height: 100%;
+      background-color: $primary-dark;
+      font-family: inherit;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+    }
+  }
+}
+
+//SHOPPING-CART
+.cart-items {
+  padding: 1em 1em 0;
+  .cart-item {
+    background-color: #fff;
+    margin-bottom: 1em;
+    list-style: none;
+    display: grid;
+    grid-template-columns: (15% 60% 20% 5%);
+    justify-content: space-between;
+
+    &:not(:last-child) {
+      padding-bottom: 1em;
+      border-bottom: 1px dashed $secondary-dark;
+    }
+
+    i {
+      text-align: end;
+      margin-top: 0.15em;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .removed-ingredients.name {
+      color: red;
+    }
+  }
+
+  footer {
+    width: 100%;
+    padding: 2em 0 1em;
+    position: sticky;
+    bottom: 0;
+    background-color: #fff;
+
+    .price-total {
+      font-size: 1.3em;
+      font-weight: 700;
+      text-align: right;
+      position: sticky;
+      color: #000;
+    }
+
+    .shopping-button {
+      width: 100%;
+      padding: 0.7em;
+      margin-top: 1em;
+      border: 2px solid $primary-dark;
+      font-size: 1em;
+      font-family: inherit;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &.continue {
+        background-color: #fff;
+        color: $primary-dark;
+        font-weight: 600;
+      }
+
+      &.finish {
+        background-color: $primary-dark;
+        color: #fff;
+      }
+    }
+  }
+}
+
+//LOGIN / REGISTER FORM
+.form {
+  width: 100%;
+  max-width: 512px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+
+  .input-field {
+    width: 100%;
+    margin-bottom: 1em;
+    position: relative;
+
+    :invalid[focused='true'] {
+      border: 1px solid red;
+
+      ~ .error-message {
+        display: block;
+      }
+    }
+
+    .error-message {
+      font-size: 0.8em;
+      color: red;
+      display: none;
+      text-align: end;
+    }
+
+    label {
+      font-size: 0.8em;
+      font-weight: 700;
+    }
+
+    input {
+      width: 100%;
+      padding: 1em;
+      margin: 0.3em 0;
+    }
+
+    .show-password {
+      cursor: pointer;
+      position: absolute;
+      right: 0.8em;
+      top: 1.2em;
+    }
+  }
+
+  button {
+    width: 100%;
+    padding: 0.7em;
+    margin-top: 1em;
+    border: 2px solid $primary-dark;
+    background-color: $primary-dark;
+    color: #fff;
+    font-size: 1.3em;
+    border-radius: 0.3em;
+    cursor: pointer;
+  }
+
+  .switch-form {
+    text-align: center;
+    margin-top: 1em;
+
+    a {
+      margin-left: 0.5em;
+    }
+  }
+}
+
+//PROFILE PAGE
+.profile-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2 {
+    margin: 5.5em 0 1em;
+
+    @media screen and (min-width: 768px) {
+      margin: 7em 0 2em;
+    }
+  }
+
+  .order-history {
+    .order-history-card {
+      background-color: #fff;
+      margin: 1em;
+      padding: 1em;
+      height: fit-content;
+      max-width: 512px;
+
+      h5 {
+        color: $primary-dark;
+      }
+
+      header {
+        margin: 1em 0 0.2em;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .item {
+        &:not(:last-child) {
+          padding-bottom: 1em;
+          border-bottom: 1px dashed $secondary-dark;
+        }
+
+        .ingredients {
+          display: flex;
+          flex-wrap: wrap;
+
+          max-width: 70%;
+
+          &.custom {
+            :first-child::before {
+              content: ('+ ');
+            }
+          }
+
+          &.removed {
+            :first-child::before {
+              content: ('- ');
+            }
+          }
+
+          :not(:last-child)::after {
+            content: ',';
+          }
+
+          :not(:first-child) {
+            padding-left: 0.4em;
+          }
+        }
+      }
+    }
+  }
+
+  .back-to-main-page {
+    margin: 3em;
+  }
+}
