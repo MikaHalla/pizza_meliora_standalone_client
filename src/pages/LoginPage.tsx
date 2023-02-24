@@ -42,7 +42,7 @@ const LoginPage = () => {
     // send user data to server
     e.preventDefault();
     const res = await fetch(
-      'http://pizza-meliora.cyclic.app/api/users/login',
+      'https://pizza-meliora.cyclic.app/api/users/login',
       {
         method: 'POST',
         headers: {

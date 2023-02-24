@@ -20,7 +20,7 @@ const ShoppingCartPage = () => {
       const currentUser = JSON.parse(user);
 
       const res = await fetch(
-        'http://pizza-meliora.cyclic.app/api/orders',
+        'https://pizza-meliora.cyclic.app/api/orders',
         {
           method: 'POST',
           headers: {

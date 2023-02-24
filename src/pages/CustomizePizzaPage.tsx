@@ -32,7 +32,7 @@ const CustomizePizza = () => {
 
   const fetchCustomIngredients = async () => {
     const res = await fetch(
-      'http://pizza-meliora.cyclic.app/api/ingredients',
+      'https://pizza-meliora.cyclic.app/api/ingredients',
       {
         method: 'GET',
       }

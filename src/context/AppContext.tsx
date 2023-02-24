@@ -22,7 +22,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
 
   const fetchPizzas = async () => {
     const res = await fetch(
-      'http://pizza-meliora.cyclic.app/api/pizza',
+      'https://pizza-meliora.cyclic.app/api/pizza',
       {
         method: 'GET',
       }

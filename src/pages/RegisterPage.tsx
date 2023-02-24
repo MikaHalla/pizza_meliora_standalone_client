@@ -80,7 +80,7 @@ const RegisterPage = () => {
     password: string
   ) => {
     const res = await fetch(
-      'http://pizza-meliora.cyclic.app/api/users/register',
+      'https://pizza-meliora.cyclic.app/api/users/register',
       {
         method: 'POST',
         headers: {
